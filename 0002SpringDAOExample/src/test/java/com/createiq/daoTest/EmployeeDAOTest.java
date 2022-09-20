@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,7 +15,7 @@ import com.createiq.dao.EmployeeDAO;
 import com.createiq.model.Employee;
 
 public class EmployeeDAOTest {
-	
+
 	private static EmployeeDAO employeeDAO;
 
 	@BeforeClass
