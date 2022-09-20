@@ -16,14 +16,14 @@ public class Test {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 		//ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
 		EmployeeController employeeController = (EmployeeController) applicationContext.getBean("employeeController");
-		Employee employee = new Employee(1004, "Rajesh", 20000.00);
-		employeeController.save(employee);
+//		Employee employee = new Employee(1004, "Rajesh", 20000.00);
+//		employeeController.save(employee);
 		
-//		List<Employee> employees = employeeController.findAll();
-//		
-//		for (Employee employee : employees) {
-//			System.out.println(employee);
-//		}
+		List<Employee> employees = employeeController.findAll();
+		
+		for (Employee employee : employees) {
+			System.out.println(employee);
+		}
 		
 		System.out.println("Done");
 	}
