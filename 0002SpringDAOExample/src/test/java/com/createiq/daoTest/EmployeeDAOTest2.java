@@ -4,27 +4,29 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.createiq.dao.EmployeeDAO;
 import com.createiq.model.Employee;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations="classpath:/spring.xml")
+public class EmployeeDAOTest2 {
 
-public class EmployeeDAOTest {
+	@Autowired
+	private  EmployeeDAO employeeDAO;
 
-	private static EmployeeDAO employeeDAO;
-
-	@BeforeClass
-	public static void setUp() {
-		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-		employeeDAO = (EmployeeDAO) applicationContext.getBean("employeeDAOImpl");
+	
+    @Test
+	public void daoTest() {
+		System.out.println(employeeDAO);
 	}
-
-	@Test
+    
+    @Test
 	@Ignore
 	public void addTest() {
 		employeeDAO.save(new Employee(1006,"Roy",34000.00));
