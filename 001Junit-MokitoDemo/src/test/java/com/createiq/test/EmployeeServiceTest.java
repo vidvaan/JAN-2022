@@ -4,6 +4,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.any;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -44,6 +46,8 @@ public class EmployeeServiceTest {
 	public void findAllTest() {
 		when(employeeDAO.findAll()).thenReturn(employees);
 		assertThat(employeeService.findAll(), hasSize(3));
+		verify(employeeDAO,times(1)).findAll();
+		verify(employeeDAO).findAll();
 	}
 	
 	
