@@ -29,5 +29,14 @@ public class EmployeeController {
 	public List<Employee> findAll(){
 		return employeeService.findAll();
 	}
+	
+	
+	public void deleteById(Integer eid) {
+		employeeService.deleteById(eid);
+	}
+
+	public Employee findById(Integer eid) {
+		return employeeService.findByEid(eid);
+	}
 
 }

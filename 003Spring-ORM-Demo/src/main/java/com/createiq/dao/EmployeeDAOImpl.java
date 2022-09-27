@@ -36,4 +36,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return (List<Employee>) hibernateTemplate.find("from Employee");
 	}
 
+	@Override
+	public Employee findByEid(Integer eid) {
+		return hibernateTemplate.get(Employee.class, eid);
+	}
+
 }

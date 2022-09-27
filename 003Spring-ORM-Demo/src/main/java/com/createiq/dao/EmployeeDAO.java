@@ -12,4 +12,6 @@ public interface EmployeeDAO {
 	public void deleteById(Integer eid);
 
 	public List<Employee> findAll();
+	
+	public Employee findByEid(Integer eid);
 }

@@ -10,4 +10,8 @@ public interface EmployeeService {
 	public void update(Employee employee);
 
 	public List<Employee> findAll();
+	
+	public void deleteById(Integer eid);
+
+	public Employee findByEid(Integer eid);
 }
