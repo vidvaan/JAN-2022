@@ -13,28 +13,32 @@ public class EmployeeServiceImpl implements EmployeeService{
 	private EmployeeDAO employeeDAO;
 
 	@Override
+	public void save(Employee employee) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(Employee employee) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(int eid) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
 	public List<Employee> findAll() {
 		return employeeDAO.findAll();
 	}
 
 	@Override
-	public void add(Employee employee) {
-         employeeDAO.save(employee);		
-	}
-
-	@Override
-	public void update(Employee employee) {
-        employeeDAO.update(employee);		
-	}
-
-	@Override
-	public void delete(Integer eid) {
-        employeeDAO.deleteById(eid);		
-	}
-
-	@Override
 	public Employee findById(Integer eid) {
-		return employeeDAO.findByEid(eid);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
