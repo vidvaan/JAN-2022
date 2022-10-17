@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h1>Home JSP - All Employees</h1>
+	<a href="./addEmp">New Employee</a>
 	<table border="1px">
 		<tr>
 			<th>Eid</th>

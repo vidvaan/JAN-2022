@@ -10,27 +10,27 @@ import org.springframework.stereotype.Repository;
 import com.createiq.model.Employee;
 
 @Repository
-public class EmployeeDAOImpl implements EmployeeDAO{
+public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+
 	@Override
 	public void save(Employee employee) {
-		// TODO Auto-generated method stub
+		jdbcTemplate.update("INSERT INTO EMP_TAB VALUES(?,?,?)", new Object[] {employee.getEid(),employee.getEname(),employee.getEsal()});
 		
 	}
 
 	@Override
 	public void update(Employee employee) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(int eid) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

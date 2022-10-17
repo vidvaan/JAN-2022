@@ -1,8 +1,19 @@
 package com.createiq.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Employee {
+	@NotNull(message="Eid is required")
 	private Integer eid;
+	//@NotEmpty(message="Ename is required")
+	@Size(message="Ename should have min 3 char length", min=3)
+	//@Max(message="Ename should have max 8 char length", value = 8)
 	private String ename;
+	@NotNull(message="Esal is required")
 	private Double esal;
 
 	public Employee(Integer eid, String ename, Double esal) {
