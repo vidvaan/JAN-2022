@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+	<h1>FindAll - Employees</h1>
+
+	<div th:switch="${employees}">
+
+		<div th:case="null">
+			<h1>No records found !</h1>
+		</div>
+		<div th:case="*">
+			<table border="1px;">
+				<tr>
+					<th>Eid</th>
+					<th>Ename</th>
+					<th>Esal</th>
+				</tr>
+
+				<tr th:each="employee : ${employees}">
+					<td th:text="${employee.eid}"></td>
+					<td th:text="${employee.ename}"></td>
+					<td th:text="${employee.esal}"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+
+</html>

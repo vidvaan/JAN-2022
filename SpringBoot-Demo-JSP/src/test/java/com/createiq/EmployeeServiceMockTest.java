@@ -44,6 +44,4 @@ public class EmployeeServiceMockTest {
 		verify(employeeDAO,times(1)).findAll();
 		verify(employeeDAO).findAll();
 	}
-	
-	
 }
