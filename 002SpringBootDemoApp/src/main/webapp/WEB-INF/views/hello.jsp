@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Home Page</h1>
-<a href='./hel'>Hello</a>
-
-<a href='./wel'>Welcome</a>
-
-<a href="./allEmployees">Get All Employees</a>
+<h1>Hello Balaji</h1>
 </body>
 </html>

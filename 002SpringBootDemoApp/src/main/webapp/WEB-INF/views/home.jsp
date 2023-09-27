@@ -8,10 +8,5 @@
 </head>
 <body>
 <h1>Home Page</h1>
-<a href='./hel'>Hello</a>
-
-<a href='./wel'>Welcome</a>
-
-<a href="./allEmployees">Get All Employees</a>
 </body>
 </html>
