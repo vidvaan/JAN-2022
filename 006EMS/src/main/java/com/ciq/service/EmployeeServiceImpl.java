@@ -28,19 +28,19 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private DepartmentRepository departmentRepository;
 
 	@Override
-	public void save(Employee employee) {
+	public Employee save(Employee employee) {
 		addressRepository.save(employee.getAddress());
 		departmentRepository.save(employee.getDepartment());
 		employee.getProjects().forEach(project -> projectRepository.save(project));
-		employeeRepository.save(employee);
+		return employeeRepository.save(employee);
 	}
 
 	@Override
-	public void update(Employee employee) {
+	public Employee update(Employee employee) {
 		addressRepository.save(employee.getAddress());
 		departmentRepository.save(employee.getDepartment());
 		employee.getProjects().forEach(project -> projectRepository.save(project));
-		employeeRepository.save(employee);
+		return employeeRepository.save(employee);
 	}
 
 	@Override

@@ -5,9 +5,9 @@ import java.util.List;
 import com.ciq.entity.Employee;
 
 public interface EmployeeService {
-	 public void save(Employee employee);
+	 public Employee save(Employee employee);
 	   
-	   public void update(Employee employee);
+	   public Employee update(Employee employee);
 	   
 	   public void deleteById(Long eid);
 	   

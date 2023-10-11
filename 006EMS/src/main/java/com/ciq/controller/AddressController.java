@@ -14,45 +14,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ciq.entity.Employee;
-import com.ciq.service.EmployeeService;
+import com.ciq.entity.Address;
+import com.ciq.entity.Department;
+import com.ciq.service.AddressService;
+import com.ciq.service.DepartmentService;
 
 @RestController
-@RequestMapping("/emp")
-public class EmployeeController {
+@RequestMapping("/addr")
+public class AddressController {
 
 	@Autowired
-	private EmployeeService employeeService;
+	private AddressService addressService;
 
 	@GetMapping("/findAll")
-	public List<Employee> findAll() {
-		return employeeService.findAll();
+	public List<Address> findAll() {
+		return addressService.findAll();
 	}
 
-	@GetMapping("/findById/{eid}")
-	public Employee findById(@PathVariable Long eid) {
-		return employeeService.findById(eid);
+	@GetMapping("/findById/{aid}")
+	public Address findById(@PathVariable Long aid) {
+		return addressService.findById(aid);
 	}
 
 	@PostMapping("/save")
-	public ResponseEntity<?> save(@RequestBody Employee employee) {
-		Employee emp = null;
+	public ResponseEntity<?> save(@RequestBody Address address) {
+		Address addr = null;
 		try {
-		    emp = employeeService.save(employee);
+		    addr = addressService.save(address);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<Employee>(emp, HttpStatus.CREATED);
+		return new ResponseEntity<Address>(addr, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update")
-	public Employee update(@RequestBody Employee employee) {
-		return employeeService.update(employee);
+	public Address update(@RequestBody Address address) {
+		return addressService.update(address);
 	}
 
-	@DeleteMapping("/delete/{eid}")
-	public String delete(@PathVariable Long eid) {
-		employeeService.deleteById(eid);
+	@DeleteMapping("/delete/{aid}")
+	public String delete(@PathVariable Long aid) {
+		addressService.deleteById(aid);
 		return "Deleted Successfully";
 	}
 

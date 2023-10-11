@@ -14,45 +14,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ciq.entity.Employee;
-import com.ciq.service.EmployeeService;
+import com.ciq.entity.Department;
+import com.ciq.service.DepartmentService;
 
 @RestController
-@RequestMapping("/emp")
-public class EmployeeController {
+@RequestMapping("/dept")
+public class DepartmentController {
 
 	@Autowired
-	private EmployeeService employeeService;
+	private DepartmentService departmentService;
 
 	@GetMapping("/findAll")
-	public List<Employee> findAll() {
-		return employeeService.findAll();
+	public List<Department> findAll() {
+		return departmentService.findAll();
 	}
 
-	@GetMapping("/findById/{eid}")
-	public Employee findById(@PathVariable Long eid) {
-		return employeeService.findById(eid);
+	@GetMapping("/findById/{did}")
+	public Department findById(@PathVariable Long did) {
+		return departmentService.findById(did);
 	}
 
 	@PostMapping("/save")
-	public ResponseEntity<?> save(@RequestBody Employee employee) {
-		Employee emp = null;
+	public ResponseEntity<?> save(@RequestBody Department department) {
+		Department dept = null;
 		try {
-		    emp = employeeService.save(employee);
+		    dept = departmentService.save(department);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<Employee>(emp, HttpStatus.CREATED);
+		return new ResponseEntity<Department>(dept, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update")
-	public Employee update(@RequestBody Employee employee) {
-		return employeeService.update(employee);
+	public Department update(@RequestBody Department department) {
+		return departmentService.update(department);
 	}
 
-	@DeleteMapping("/delete/{eid}")
-	public String delete(@PathVariable Long eid) {
-		employeeService.deleteById(eid);
+	@DeleteMapping("/delete/{did}")
+	public String delete(@PathVariable Long did) {
+		departmentService.deleteById(did);
 		return "Deleted Successfully";
 	}
 

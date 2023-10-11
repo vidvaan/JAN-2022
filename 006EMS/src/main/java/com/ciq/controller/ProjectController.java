@@ -14,45 +14,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ciq.entity.Employee;
-import com.ciq.service.EmployeeService;
+import com.ciq.entity.Department;
+import com.ciq.entity.Project;
+import com.ciq.service.DepartmentService;
+import com.ciq.service.ProjectService;
 
 @RestController
-@RequestMapping("/emp")
-public class EmployeeController {
+@RequestMapping("/project")
+public class ProjectController {
 
 	@Autowired
-	private EmployeeService employeeService;
+	private ProjectService projectService;
 
 	@GetMapping("/findAll")
-	public List<Employee> findAll() {
-		return employeeService.findAll();
+	public List<Project> findAll() {
+		return projectService.findAll();
 	}
 
-	@GetMapping("/findById/{eid}")
-	public Employee findById(@PathVariable Long eid) {
-		return employeeService.findById(eid);
+	@GetMapping("/findById/{pid}")
+	public Project findById(@PathVariable Long pid) {
+		return projectService.findById(pid);
 	}
 
 	@PostMapping("/save")
-	public ResponseEntity<?> save(@RequestBody Employee employee) {
-		Employee emp = null;
+	public ResponseEntity<?> save(@RequestBody Project project) {
+		Project pro = null;
 		try {
-		    emp = employeeService.save(employee);
+		    pro = projectService.save(project);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<Employee>(emp, HttpStatus.CREATED);
+		return new ResponseEntity<Project>(pro, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update")
-	public Employee update(@RequestBody Employee employee) {
-		return employeeService.update(employee);
+	public Project update(@RequestBody Project project) {
+		return projectService.update(project);
 	}
 
-	@DeleteMapping("/delete/{eid}")
-	public String delete(@PathVariable Long eid) {
-		employeeService.deleteById(eid);
+	@DeleteMapping("/delete/{pid}")
+	public String delete(@PathVariable Long pid) {
+		projectService.deleteById(pid);
 		return "Deleted Successfully";
 	}
 
