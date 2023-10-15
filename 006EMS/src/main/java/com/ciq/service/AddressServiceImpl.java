@@ -40,7 +40,6 @@ public class AddressServiceImpl implements AddressService{
 
 	@Override
 	public List<Address> findAll() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

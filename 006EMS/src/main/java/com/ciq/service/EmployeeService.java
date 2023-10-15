@@ -15,4 +15,6 @@ public interface EmployeeService {
 	   
 	   
 	   public List<Employee> findAll();
+	   
+	   public List<Employee> findAllWithPaging(Integer pageNumber,Integer numOfRecords);
 }

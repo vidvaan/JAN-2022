@@ -4,11 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ciq.entity.Department;
 import com.ciq.entity.Employee;
 import com.ciq.repository.DepartmentRepository;
-
+@Service
 public class DepartmentServiceImpl implements DepartmentService{
 	
 	@Autowired

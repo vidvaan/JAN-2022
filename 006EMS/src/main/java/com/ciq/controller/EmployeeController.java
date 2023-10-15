@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ciq.entity.Employee;
 import com.ciq.service.EmployeeService;
 
+import io.swagger.v3.oas.models.security.SecurityScheme.In;
+
 @RestController
 @RequestMapping("/emp")
 public class EmployeeController {
@@ -36,13 +38,16 @@ public class EmployeeController {
 
 	@PostMapping("/save")
 	public ResponseEntity<?> save(@RequestBody Employee employee) {
-		Employee emp = null;
-		try {
-		    emp = employeeService.save(employee);
-		} catch (Exception e) {
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
-		}
-		return new ResponseEntity<Employee>(emp, HttpStatus.CREATED);
+		
+		//
+		throw new NullPointerException("Predifined Excption");
+//		Employee emp = null;
+//		try {
+//		    emp = employeeService.save(employee);
+//		} catch (Exception e) {
+//			return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+//		}
+//		return new ResponseEntity<Employee>(emp, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update")
@@ -54,6 +59,12 @@ public class EmployeeController {
 	public String delete(@PathVariable Long eid) {
 		employeeService.deleteById(eid);
 		return "Deleted Successfully";
+	}
+	
+	
+	@GetMapping("/findAll/{pageNum}/{numOfRecords}")
+	public List<Employee> findAllPaging(@PathVariable Integer pageNum,@PathVariable Integer numOfRecords) {
+		return employeeService.findAllWithPaging(pageNum-1, numOfRecords);
 	}
 
 }
