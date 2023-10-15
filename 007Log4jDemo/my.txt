@@ -1,0 +1,12 @@
+[main] INFO  com.ciq.DemoController 15/10/2023 12:04:08 – Demo controller Save  End
+[main] INFO  com.ciq.Test 15/10/2023 12:04:08 – Main End
+[main] INFO  com.ciq.Test 15/10/2023 12:04:08 – Main End
+[main] WARN  com.ciq.Test 15/10/2023 12:04:08 – Main End
+[main] FATAL com.ciq.Test 15/10/2023 12:04:08 – Main End
+[main] ERROR com.ciq.Test 15/10/2023 12:04:08 – Main End
+[main] WARN  com.ciq.Test 15/10/2023 12:04:30 – Main End
+[main] FATAL com.ciq.Test 15/10/2023 12:04:30 – Main End
+[main] ERROR com.ciq.Test 15/10/2023 12:04:30 – Main End
+[main] FATAL com.ciq.Test 15/10/2023 12:04:57 – Main End
+[main] FATAL com.ciq.Test 15/10/2023 12:05:17 – Main End
+[main] ERROR com.ciq.Test 15/10/2023 12:05:17 – Main End
