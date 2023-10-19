@@ -3,7 +3,6 @@ package com.ciq.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +16,26 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ciq.entity.Employee;
 import com.ciq.service.EmployeeService;
 
-import io.swagger.v3.oas.models.security.SecurityScheme.In;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/emp")
+@Slf4j
 public class EmployeeController {
+
+	
+
+	@RequestMapping("/log")
+	public String log() {
+		// Logging various log level messages
+		log.trace("Log level: TRACE");
+		log.info("Log level: INFO");
+		log.debug("Log level: DEBUG");
+		log.error("Log level: ERROR");
+		log.warn("Log level: WARN");
+
+		return "Hey! You can check the output in the logs";
+	}
 
 	@Autowired
 	private EmployeeService employeeService;
@@ -38,7 +52,7 @@ public class EmployeeController {
 
 	@PostMapping("/save")
 	public ResponseEntity<?> save(@RequestBody Employee employee) {
-		
+
 		//
 		throw new NullPointerException("Predifined Excption");
 //		Employee emp = null;
@@ -60,11 +74,10 @@ public class EmployeeController {
 		employeeService.deleteById(eid);
 		return "Deleted Successfully";
 	}
-	
-	
+
 	@GetMapping("/findAll/{pageNum}/{numOfRecords}")
-	public List<Employee> findAllPaging(@PathVariable Integer pageNum,@PathVariable Integer numOfRecords) {
-		return employeeService.findAllWithPaging(pageNum-1, numOfRecords);
+	public List<Employee> findAllPaging(@PathVariable Integer pageNum, @PathVariable Integer numOfRecords) {
+		return employeeService.findAllWithPaging(pageNum - 1, numOfRecords);
 	}
 
 }

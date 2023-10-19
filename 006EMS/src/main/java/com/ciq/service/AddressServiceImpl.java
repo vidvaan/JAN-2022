@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import com.ciq.entity.Address;
 import com.ciq.entity.Project;
 import com.ciq.repository.AddressRepository;
+
+import lombok.extern.slf4j.Slf4j;
 @Service
+@Slf4j
 public class AddressServiceImpl implements AddressService{
 	@Autowired
 	private AddressRepository addressRepository;

@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 import com.ciq.entity.Department;
 import com.ciq.entity.Employee;
 import com.ciq.repository.DepartmentRepository;
+
+import lombok.extern.slf4j.Slf4j;
 @Service
+@Slf4j
 public class DepartmentServiceImpl implements DepartmentService{
 	
 	@Autowired

@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ciq.entity.Project;
 import com.ciq.service.ProjectService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @RequestMapping("/project")
+@Slf4j
 public class ProjectController {
 
 	@Autowired

@@ -15,14 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ciq.entity.Address;
-import com.ciq.entity.Department;
 import com.ciq.service.AddressService;
-import com.ciq.service.DepartmentService;
+
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/addr")
+@Slf4j
 public class AddressController {
-
+	
 	@Autowired
 	private AddressService addressService;
 

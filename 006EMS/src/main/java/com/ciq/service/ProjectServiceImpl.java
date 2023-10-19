@@ -10,7 +10,10 @@ import com.ciq.entity.Department;
 import com.ciq.entity.Project;
 import com.ciq.repository.ProjectRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	private ProjectRepository projectRepository;
