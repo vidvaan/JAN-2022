@@ -1,10 +1,19 @@
 package com.ciq.service.model;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public class EmailDetails {
 
 	// Class data members
+	@NotEmpty(message = "Recipient is missing!")
+	@Email(message = "Please provide valid email!")
 	private String recipient;
+	@NotEmpty(message = "Msg Body is missing!")
+	@Size(message = "Msg Body should be more then 10 char!",min = 10)
 	private String msgBody;
+	@NotEmpty(message = "Subject is missing!")
 	private String subject;
 	private String attachment;
 
