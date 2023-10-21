@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ciq.service.EmailService;
 import com.ciq.service.model.EmailDetails;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class EmailController {
 
@@ -15,14 +17,14 @@ public class EmailController {
 	private EmailService emailService;
 
 	@PostMapping("/sendEmail")
-	public String sendEmail(@RequestBody EmailDetails emailDetails) {
+	public String sendEmail(@RequestBody @Valid EmailDetails emailDetails) {
 		String result = emailService.sendSimpleMail(emailDetails);
 		return result;
 
 	}
 	
 	@PostMapping("/sendEmailWithAttachment")
-	public String sendEmailWithAttachment(@RequestBody EmailDetails emailDetails) {
+	public String sendEmailWithAttachment(@RequestBody @Valid EmailDetails emailDetails) {
 		String result = emailService.sendMailWithAttachment(emailDetails);
 		return result;
 
