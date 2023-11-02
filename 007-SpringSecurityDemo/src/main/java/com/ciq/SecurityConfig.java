@@ -1,8 +1,13 @@
 package com.ciq;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -17,53 +22,55 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	
+
+	@Autowired
+	private UserDetailsService userDetailsService;
+
 	@Bean
 	public static PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
+//	@Bean
+//	public UserDetailsService users() {
+//		// The builder will ensure the passwords are encoded before saving in memory
+//	//	UserBuilder users = User.withDefaultPasswordEncoder();
+//		
+//		UserBuilder users = User.builder();
+//		UserDetails user = users
+//			.username("balaji")
+//			.password("$2a$10$sf8K/vCKM3hSvB0W8OzycOSZ1VD/UeHxI.JgniQLopXwYdH3uKM0u")
+//			.roles("USER")
+//			.build();
+//		UserDetails admin = users
+//			.username("srikanth")
+//			.password("$2a$10$7CewQish1obRT2VwhEAL0.Tc.ujbSRd/J92Rx3IqX9.W401TJ7/B6")
+//			.roles("ADMIN","USER")
+//			.build();
+//		
+//		
+//		return new InMemoryUserDetailsManager(user, admin);
+//	}
+
 	@Bean
-	public UserDetailsService users() {
-		// The builder will ensure the passwords are encoded before saving in memory
-	//	UserBuilder users = User.withDefaultPasswordEncoder();
-		
-		UserBuilder users = User.builder();
-		UserDetails user = users
-			.username("balaji")
-			.password("$2a$10$sf8K/vCKM3hSvB0W8OzycOSZ1VD/UeHxI.JgniQLopXwYdH3uKM0u")
-			.roles("USER")
-			.build();
-		UserDetails admin = users
-			.username("srikanth")
-			.password("$2a$10$7CewQish1obRT2VwhEAL0.Tc.ujbSRd/J92Rx3IqX9.W401TJ7/B6")
-			.roles("ADMIN","USER")
-			.build();
-		
-		
-		return new InMemoryUserDetailsManager(user, admin);
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+		return configuration.getAuthenticationManager();
 	}
-	
-	
+
 	@Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            .csrf(Customizer.withDefaults())
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http.csrf((f) -> f.disable())
 //            .authorizeHttpRequests(authorize -> authorize
 //                .anyRequest().authenticated()
 //            )
-            .authorizeHttpRequests((authorize) -> authorize
-    			    .requestMatchers("/public/**").permitAll()
-    				.requestMatchers("/user").hasAuthority("ROLE_USER")
-    				.requestMatchers("/admin").hasAuthority("ROLE_ADMIN")
-    				.anyRequest().authenticated()
-    			)
-            .httpBasic(Customizer.withDefaults())
-            .formLogin(Customizer.withDefaults());
-        return http.build();
-    }
-	
-	
+				.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/public/**").permitAll()
+						.requestMatchers(HttpMethod.POST, "/public/**").permitAll().requestMatchers("/user")
+						.hasAuthority("ROLE_USER").requestMatchers("/admin").hasAuthority("ROLE_ADMIN").anyRequest()
+						.authenticated())
+				.httpBasic(Customizer.withDefaults()).formLogin(Customizer.withDefaults());
+		return http.build();
+	}
+
 //	@Bean
 //	SecurityFilterChain web(HttpSecurity http) throws Exception {
 //		
