@@ -30,7 +30,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public Employee findById(Integer eid) {
-		return employeeDAO.findById(eid);
+		Employee employee = null;
+		try {
+			employee = employeeDAO.findById(eid);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return employee;
 	}
 
 	@Override
