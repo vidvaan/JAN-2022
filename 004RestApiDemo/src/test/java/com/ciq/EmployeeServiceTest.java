@@ -1,13 +1,17 @@
 package com.ciq;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.nullValue;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.hasProperty;
+
+import java.util.List;
+
 import  org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.hamcrest.MatcherAssert.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -44,6 +48,16 @@ public class EmployeeServiceTest {
 		assertThat(employeeService.findById(10),nullValue());
 		
 		
+	}
+	
+	
+	@Test
+	void testFindAllEmployees() {
+
+		// test
+		List<Employee> empList = employeeService.findAll();
+
+		assertThat(empList, hasSize(3));
 	}
 	
 	
